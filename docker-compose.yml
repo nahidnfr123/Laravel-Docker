@@ -20,7 +20,23 @@ services:
             - database
             - redis
 
-        # PHP Service
+    # NGINX Service
+#    nginx:
+#        build:
+#            context: .
+#            target: nginx
+#        ports:
+#            - 80:80
+#        volumes:
+#            - ./:/var/www
+#            - ./docker-compose/nginx:/etc/nginx/conf.d/
+#        depends_on:
+#            - php
+#            - database
+#            - redis
+
+
+    # SOCKEt Service
     websocket:
         build:
             context: .
