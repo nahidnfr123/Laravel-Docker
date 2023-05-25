@@ -1,0 +1,72 @@
+### Docker Codes:
+
+### List out all the containers:  (works globally)
+-> docker ps
+-> docker ps -a
+
+(works on locally on a project)
+-> docker-compose ps
+
+
+### Stop all the containers:
+-> docker stop $(docker ps -a -q)
+
+### Stop containers
+-> docker-compose down
+
+### Build Docker:
+-> docker-compose up --build
+
+### Build Docker in background:
+-> docker-compose up -d
+
+### Build Docker in background and also build the images:
+-> docker-compose up -d --build
+
+
+chmod +x /sbin/docker-entrypoint.sh
+
+
+
+
+### Run command inside a container:
+-> docker exec -it <container_id> <command>
+
+
+
+
+## run ssh command
+-> docker exec -it <container_id> /bin/bash
+-> docker exec -it <container_id> /bin/sh
+
+
+
+
+################# Removing Docker Containers #################
+
+### Remove all the containers:
+-> docker rm $(docker ps -a -q)
+
+### Remove all the images:
+-> docker rmi $(docker images -q)
+
+### Remove all the volumes:
+-> docker volume rm $(docker volume ls -q)
+
+### Remove all the networks:
+-> docker network rm $(docker network ls -q)
+
+### Remove all the images, containers, volumes and networks:
+-> docker system prune -a
+
+### Remove all the images, containers, volumes and networks forcefully:
+-> docker system prune -a --force
+
+### Remove all the images, containers, volumes and networks forcefully and also remove the anonymous volumes:
+-> docker system prune -a --force --volumes
+
+### Remove all the images, containers, volumes and networks forcefully and also remove the anonymous volumes and also remove the images that are not associated with any containers:
+-> docker system prune -a --force --volumes --all
+
+### Remove all the images, containers, volumes and networks forcefully and also remove the anonymous volumes and also remove the images that are not associated with any containers and also remove the images that are dangling:
+-> docker system prune -a --force --volumes --all --filter "until=24h"
